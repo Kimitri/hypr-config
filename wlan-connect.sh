@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Connect to a wireless network using nmcli
 
+INSTANCE=$(hyprctl instances | awk 'NR==1{print $2}' | sed 's/.$//')
+
 notify () {
-    INSTANCE=$(hyprctl instances | awk 'NR==1{print $2}' | sed 's/.$//')
     hyprctl -i $INSTANCE notify -1 5000 "rgb(ff1ea3)" "$1"
 }
 
